@@ -55,7 +55,7 @@ export default {
     }
   },
   methods: {
-    checkForm (e) {
+    async checkForm (e) {
       this.errors = [];
 
       if (!this.name) {
@@ -73,7 +73,7 @@ export default {
       }
 
       if (!this.errors.length) {
-        this.postFromData()
+        await this.postFromData()
         this.$router.push('/')
       }
 
@@ -93,12 +93,6 @@ export default {
         email: this.email,
         password: this.password
       })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
     }
   }
 }
