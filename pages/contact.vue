@@ -1,7 +1,16 @@
 <template>
-  <div class="relative flex flex-col justify-center min-h-screen bg-gray-100 items-center p-8">
-    <h1 class="text-xl font-bold mb-6">Регистрация</h1>
+  <div class="flex flex-col justify-center min-h-screen bg-gray-100 items-center p-8">
+    <h1 class="text-xl font-bold mb-6">Контакты</h1>
 
+    <transition name="fade">
+      <div
+        v-show="isFormSended"
+        class="absolute bg-green-400 shadow-md p-4 text-white flex justify-between"
+      >
+        <div class="mr-4">Сообщение отправлено</div>
+        <button @click="isFormSended = false">&#10006;</button>
+      </div>
+    </transition>
     <form
       @submit="checkForm"
       :novalidate="true"
@@ -29,19 +38,17 @@
         required
         class="custom-input"
       >
-      <input
-        v-model="password"
-        type="password"
-        placeholder="Password"
-        name="password"
+      <textarea
+        v-model="message"
+        placeholder="Message"
         required
         class="custom-input mb-8"
-      >
+      />
       <button
         type="submit"
         class="custom-purple-btn"
       >
-        Зарегистрироваться
+        Отправить
       </button>
     </form>
   </div>
@@ -55,7 +62,8 @@ export default {
       errors: [],
       name: null,
       email: null,
-      password: null,
+      message: null,
+      isFormSended: false
     }
   },
   methods: {
@@ -65,20 +73,23 @@ export default {
       if (!this.name) {
         this.errors.push('Укажите имя.');
       }
+
       if (!this.email) {
         this.errors.push('Укажите электронную почту.');
       } else if (!this.validEmail(this.email)) {
         this.errors.push('Укажите корректный адрес электронной почты.');
       }
-      if (!this.password) {
-        this.errors.push('Укажите пароль.');
-      } else if (!this.validPassword(this.password)) {
-        this.errors.push('Пароль должен содержать буквы (верхнего и нижнего регистра), цифры, спецсимволы. Длина пароля минимум 8 символов.');
+
+      if (!this.message) {
+        this.errors.push('Укажите сообщение.');
+      } else if (this.message.length > 150) {
+        this.errors.push('Максимальная длина сообщения - 150 символов.');
       }
 
       if (!this.errors.length) {
-        await this.postFromData()
-        this.$router.push('/')
+        // await this.postFromData()
+        this.postFromData()
+        this.isFormSended = true;
       }
 
       e.preventDefault();
@@ -87,15 +98,11 @@ export default {
       let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
-    validPassword (password) {
-      let re = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
-      return re.test(password);
-    },
     async postFromData () {
-      await this.$axios.$post('/api/v1/signup', {
+      await this.$axios.$post('/api/v1/contact', {
         name: this.name,
         email: this.email,
-        password: this.password
+        message: this.message
       })
     }
   }
@@ -103,5 +110,10 @@ export default {
 </script>
 
 <style scoped>
-
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>

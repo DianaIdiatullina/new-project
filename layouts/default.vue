@@ -1,9 +1,7 @@
 <template>
   <div>
     <HeaderComponent />
-    <div class="container mx-auto h-full">
-      <Nuxt />
-    </div>
+    <Nuxt />
   </div>
 </template>
 

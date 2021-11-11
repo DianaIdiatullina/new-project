@@ -19,7 +19,7 @@
         placeholder="Email"
         name="email"
         required
-        class="block shadow-md p-4 mb-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent w-full"
+        class="custom-input"
       >
       <input
         v-model="password"
@@ -27,11 +27,11 @@
         placeholder="Password"
         name="password"
         required
-        class="block shadow-md p-4 mb-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent w-full"
+        class="custom-input mb-8"
       >
       <button
         type="submit"
-        class="px-8 py-4 text-white bg-purple-500 hover:bg-purple-700 w-full"
+        class="custom-purple-btn"
       >
         Войти
       </button>
