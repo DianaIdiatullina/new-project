@@ -1,7 +1,8 @@
 <template>
-  <div class="container mx-auto h-full">main page</div>
+  <div class="p-4 md:p-8">main page</div>
 </template>
 
 <script>
-export default {}
+export default {
+}
 </script>

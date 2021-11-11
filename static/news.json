@@ -1,0 +1,10 @@
+{
+  "news": [
+    {
+      "title" : "news1",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue. Nulla at volutpat diam ut venenatis tellus in.",
+      "key" : "news1",
+      "image" : "https://image.freepik.com/free-vector/black-dragon-esport-gaming-logo-premium_96628-266.jpg"
+    }
+  ]
+}
