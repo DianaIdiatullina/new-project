@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .custom-input {
+    @apply block shadow-md p-4 mb-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent w-full;
+  }
+  .custom-purple-btn {
+    @apply px-8 py-4 text-white bg-purple-500 hover:bg-purple-700 w-full;
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.modal-container {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,0,0,.25);
+  padding: 1rem;
+}
+
+.modal {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 47.375rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-radius: 1rem;
+  background: #fff;
+}
+
