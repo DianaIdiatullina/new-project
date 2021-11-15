@@ -10,7 +10,7 @@
       >
         <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200 mr-4"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span>
-          Быстрый поиск
+          Поиск
         </span>
       </button>
       <ul class="hidden md:flex text-gray-500">
@@ -36,16 +36,15 @@
         @click.self="openSearch = false"
       >
         <div class="modal shadow-xl p-4">
-          <div class="flex mb-6 items-center border-b-2">
-            <svg width="24" height="24" fill="none" class="text-gray-400"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-
+          <div class="flex mb-6 items-center">
             <input
               v-model="search"
               type="text"
-              placeholder="Быстрый поиск"
+              placeholder="Поиск"
               name="search"
-              class="block p-4 focus:outline-none	w-full mr-2"
+              class="block p-4 focus:outline-none border-b-2 w-full mr-2"
             >
+            <button class="custom-purple-btn w-40">Искать</button>
           </div>
 
           <div class="overflow-auto px-4">
@@ -80,7 +79,7 @@ export default {
   name: "HeaderComponent",
   data() {
     return {
-      openSearch: true,
+      openSearch: false,
       search: null,
     }
   },
