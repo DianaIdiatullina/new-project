@@ -1,5 +1,8 @@
 <template>
   <div class="container mx-auto h-full p-4">
+    <h1 class="text-2xl font-bold p-4">
+      Категории товаров
+    </h1>
     <div class="flex flex-wrap">
       <nuxt-link
         v-for="(item, index) in category"
