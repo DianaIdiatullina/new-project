@@ -15,6 +15,9 @@
       </button>
       <ul class="hidden md:flex text-gray-500">
         <li class="text-sm">
+          <nuxt-link to="/category">Товары</nuxt-link>
+        </li>
+        <li class="text-sm ml-4">
           <nuxt-link to="/news">Новости</nuxt-link>
         </li>
         <li class="text-sm ml-4">
@@ -57,7 +60,7 @@
               <img
                 src="https://ilike.pet/upload/iblock/786/786fc0798233006257d41dc0132f6387.jpg"
                 alt=""
-                class="w-20 mr-4"
+                class="w-20 object-contain mr-4"
               >
               <div>
                 <h3 class="text-xl font-bold mb-2">
