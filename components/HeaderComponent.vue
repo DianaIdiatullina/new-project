@@ -1,11 +1,11 @@
 <template>
   <header class="bg-gray-100">
-    <div class="container mx-auto flex justify-between items-center p-4 md:p-8">
+    <div class="container relative mx-auto flex justify-between items-center p-4 md:p-8">
       <h2 class="text-xl font-semibold">
         <nuxt-link to="/">Shop</nuxt-link>
       </h2>
       <button
-        class="group leading-6 font-medium flex items-center text-gray-400 hover:text-gray-500 transition-colors duration-200 p-2 bg-white rounded-2xl w-full mx-4"
+        class="group leading-6 font-medium flex items-center text-gray-400 hover:text-gray-500 transition-colors duration-200 p-2 bg-white rounded-2xl mx-4 flex-grow"
         @click="openSearch = true"
       >
         <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200 mr-4"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -13,20 +13,29 @@
           Поиск
         </span>
       </button>
-      <ul class="flex text-gray-500">
-        <li class="text-sm">
-          <nuxt-link to="/category">Каталог товаров</nuxt-link>
-        </li>
-        <li class="text-sm ml-4">
+      <nuxt-link to="/category">
+        <button>
+          Каталог товаров
+        </button>
+      </nuxt-link>
+      <button @click="openMenu = !openMenu" class="h-10 w-10 bg-white flex items-center justify-center rounded-lg ml-4">
+        <img src="~/assets/img/menu.svg" alt="">
+      </button>
+      <ul
+        v-show="openMenu"
+        @click.self="openMenu = false"
+        class="text-gray-500 shadow-md p-4 absolute top-20 right-4 bg-white z-10"
+      >
+        <li class="text-sm p-2">
           <nuxt-link to="/news">Новости</nuxt-link>
         </li>
-        <li class="text-sm ml-4">
+        <li class="text-sm p-2">
           <nuxt-link to="/contact">Контакты</nuxt-link>
         </li>
-        <li class="text-sm ml-4">
+        <li class="text-sm p-2">
           <nuxt-link to="/login">Войти</nuxt-link>
         </li>
-        <li class="text-sm ml-4">
+        <li class="text-sm p-2">
           <nuxt-link to="/signup">Регистрация</nuxt-link>
         </li>
       </ul>
@@ -97,6 +106,7 @@ export default {
   data() {
     return {
       openSearch: false,
+      openMenu: false,
       search: null,
       category: [
         {
