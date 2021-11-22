@@ -3,7 +3,7 @@
     <h1 class="text-xl font-bold mb-6">Регистрация</h1>
 
     <form
-      @submit="checkForm"
+      @submit.prevent="checkForm"
       :novalidate="true"
       class="bg-white shadow-lg p-8 w-full md:w-8/12 lg:w-4/12"
     >
@@ -37,10 +37,7 @@
         required
         class="custom-input mb-8"
       >
-      <button
-        type="submit"
-        class="custom-purple-btn"
-      >
+      <button class="custom-purple-btn">
         Зарегистрироваться
       </button>
     </form>
@@ -92,11 +89,16 @@ export default {
       return re.test(password);
     },
     async postFromData () {
-      await this.$axios.$post('/api/v1/signup', {
+      await this.$axios.$post('http://134.209.194.82:3000/api/signup', {
         name: this.name,
         email: this.email,
         password: this.password
       })
+        // .then((response) => {
+        //   console.log(response);
+        // }, (error) => {
+        //   console.log(error);
+        // });
     }
   }
 }

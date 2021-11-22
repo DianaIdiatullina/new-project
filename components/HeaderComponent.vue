@@ -23,7 +23,7 @@
       </button>
       <ul
         v-show="openMenu"
-        @click.self="openMenu = false"
+        @click="openMenu = false"
         class="text-gray-500 shadow-md p-4 absolute top-20 right-4 bg-white z-10"
       >
         <li class="text-sm p-2">
@@ -45,11 +45,11 @@
     <div class="bg-gradient-to-r from-purple-400 via-indigo-400 to-pink-400">
       <ul class="container mx-auto flex flex-wrap justify-between items-center px-6 text-white">
         <li
-          v-for="(item, index) in category"
+          v-for="(item, index) in categories"
           :key="index"
           class="text-sm p-2"
         >
-          <nuxt-link to="/category/yfdhs">{{ item.title }}</nuxt-link>
+          <nuxt-link :to="`/category/${item.key}`">{{ item.title }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -108,30 +108,18 @@ export default {
       openSearch: false,
       openMenu: false,
       search: null,
-      category: [
-        {
-          title: 'qteueieo',
-          image: 'https://ilike.pet/upload/iblock/786/786fc0798233006257d41dc0132f6387.jpg'
-        },
-        {
-          title: 'ududjdxn',
-          image: 'https://ilike.pet/upload/iblock/786/786fc0798233006257d41dc0132f6387.jpg'
-        },
-        {
-          title: 'dunsl',
-          image: 'https://ilike.pet/upload/iblock/786/786fc0798233006257d41dc0132f6387.jpg'
-        },
-        {
-          title: 'odkdmdmd',
-          image: 'https://bipbap.ru/wp-content/uploads/2019/07/04.-risunki-dlya-srisovki-legkie-dlya-devochek.jpg'
-        },
-        {
-          title: 'sddddklll',
-          image: 'https://ilike.pet/upload/iblock/786/786fc0798233006257d41dc0132f6387.jpg'
-        }
-      ]
+      categories: [],
     }
   },
+  created() {
+    this.getCategories()
+  },
+  methods: {
+    async getCategories() {
+      let result = await this.$axios.$get('http://134.209.194.82:3000/api/categories')
+      this.categories = result.data
+    }
+  }
 }
 </script>
 

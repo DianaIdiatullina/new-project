@@ -4,7 +4,7 @@
 
     <transition name="fade">
       <div
-        v-show="isFormSended"
+        v-if="isFormSended"
         class="absolute bg-green-400 shadow-md p-4 text-white flex justify-between"
       >
         <div class="mr-4">Сообщение отправлено</div>
@@ -12,7 +12,7 @@
       </div>
     </transition>
     <form
-      @submit="checkForm"
+      @submit.prevent="checkForm"
       :novalidate="true"
       class="bg-white shadow-lg p-8 w-full md:w-8/12 lg:w-4/12"
     >
@@ -44,10 +44,7 @@
         required
         class="custom-input mb-8"
       />
-      <button
-        type="submit"
-        class="custom-purple-btn"
-      >
+      <button class="custom-purple-btn">
         Отправить
       </button>
     </form>
@@ -87,8 +84,7 @@ export default {
       }
 
       if (!this.errors.length) {
-        // await this.postFromData()
-        this.postFromData()
+        await this.postFromData()
         this.isFormSended = true;
       }
 
@@ -99,7 +95,7 @@ export default {
       return re.test(email);
     },
     async postFromData () {
-      await this.$axios.$post('/api/v1/contact', {
+      await this.$axios.$post('http://134.209.194.82:3000/api/contacts', {
         name: this.name,
         email: this.email,
         message: this.message

@@ -33,9 +33,8 @@ export default {
   },
   methods: {
     async getNews() {
-      // this.news = await this.$axios.$get('http://134.209.194.82:3000/api/news')
-      let result = await this.$axios.$get('http://localhost:4000/news.json')
-      this.news = result.news
+      let result = await this.$axios.$get('http://134.209.194.82:3000/api/news')
+      this.news = result.data
     }
   }
 }

@@ -3,7 +3,7 @@
     <h1 class="text-xl font-bold mb-6">Вход</h1>
 
     <form
-      @submit="checkForm"
+      @submit.prevent="checkForm"
       :novalidate="true"
       class="bg-white shadow-lg p-8 w-full md:w-8/12 lg:w-4/12"
     >
@@ -29,10 +29,7 @@
         required
         class="custom-input mb-8"
       >
-      <button
-        type="submit"
-        class="custom-purple-btn"
-      >
+      <button class="custom-purple-btn">
         Войти
       </button>
     </form>
@@ -64,8 +61,7 @@ export default {
       }
 
       if (!this.errors.length) {
-        // await this.postFromData()
-        this.postFromData()
+        await this.postFromData()
         this.$router.push('/')
       }
 
@@ -76,7 +72,7 @@ export default {
       return re.test(email);
     },
     async postFromData () {
-      await this.$axios.$post('/api/v1/login', {
+      await this.$axios.$post('http://134.209.194.82:3000/api/login', {
         email: this.email,
         password: this.password
       })
