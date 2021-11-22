@@ -33,6 +33,9 @@
           <nuxt-link to="/contact">Контакты</nuxt-link>
         </li>
         <li class="text-sm p-2">
+          <nuxt-link to="/vacancies">Вакансии</nuxt-link>
+        </li>
+        <li class="text-sm p-2">
           <nuxt-link to="/login">Войти</nuxt-link>
         </li>
         <li class="text-sm p-2">
@@ -112,6 +115,9 @@ export default {
     }
   },
   created() {
+    const onClickOutside = e => this.openMenu = this.$el.contains(e.target) && this.openMenu;
+    document.addEventListener('click', onClickOutside);
+    this.$on('hook:beforeDestroy', () => document.removeEventListener('click', onClickOutside));
     this.getCategories()
   },
   methods: {
