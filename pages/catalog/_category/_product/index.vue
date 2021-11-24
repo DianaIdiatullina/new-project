@@ -36,7 +36,7 @@ export default {
           image: 'https://ilike.pet/upload/iblock/786/786fc0798233006257d41dc0132f6387.jpg',
           price: '400$',
           description: '15.6" / 1920x1080 (Full HD) / IPS / Intel Core i5 / 3.1 - 4.4ГГц / RAM 16Гб / без HDD / SSD 512 Гб / GeForce RTX 3050 / 4 Гб / без OС / 1.65кг'
-        }
+        },
     }
   },
 }

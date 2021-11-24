@@ -94,11 +94,6 @@ export default {
         email: this.email,
         password: this.password
       })
-        // .then((response) => {
-        //   console.log(response);
-        // }, (error) => {
-        //   console.log(error);
-        // });
     }
   }
 }

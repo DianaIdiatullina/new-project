@@ -13,7 +13,7 @@
           Поиск
         </span>
       </button>
-      <nuxt-link to="/category">
+      <nuxt-link to="/catalog">
         <button>
           Каталог товаров
         </button>
@@ -52,7 +52,7 @@
           :key="index"
           class="text-sm p-2"
         >
-          <nuxt-link :to="`/category/${item.key}`">{{ item.title }}</nuxt-link>
+          <nuxt-link :to="`/catalog/${item.key}`">{{ item.title }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -118,6 +118,7 @@ export default {
     const onClickOutside = e => this.openMenu = this.$el.contains(e.target) && this.openMenu;
     document.addEventListener('click', onClickOutside);
     this.$on('hook:beforeDestroy', () => document.removeEventListener('click', onClickOutside));
+
     this.getCategories()
   },
   methods: {

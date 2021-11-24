@@ -7,7 +7,7 @@
       <nuxt-link
         v-for="(item, index) in categories"
         :key="index"
-        :to="`/category/${item.key}`"
+        :to="`/catalog/${item.key}`"
         class="p-4 w-full md:w-1/3 lg:w-1/4"
       >
         <div class="shadow-xl p-4">
