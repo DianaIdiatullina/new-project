@@ -61,8 +61,12 @@ export default {
       }
 
       if (!this.errors.length) {
-        await this.postFromData()
-        this.$router.push('/')
+        try {
+          await this.postFromData()
+          this.$router.push('/')
+        } catch (e) {
+          this.errors.push('Неверный логин или пароль');
+        }
       }
 
       e.preventDefault();

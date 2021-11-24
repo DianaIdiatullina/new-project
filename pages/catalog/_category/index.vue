@@ -35,7 +35,6 @@ export default {
   },
   created() {
     this.route = this.$route.params.category
-    console.log(this.route);
 
     this.getProducts(this.route)
   },

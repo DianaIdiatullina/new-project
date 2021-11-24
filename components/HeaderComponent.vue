@@ -1,7 +1,7 @@
 <template>
   <header class="bg-gray-100">
     <div class="container relative mx-auto flex justify-between items-center p-4 md:p-8">
-      <h2 class="text-xl font-semibold">
+      <h2 class="text-2xl font-semibold text-indigo-500">
         <nuxt-link to="/">Shop</nuxt-link>
       </h2>
       <button

@@ -9,10 +9,10 @@
       :to="`/vacancies/${item.key}`"
       class="block p-4 w-full shadow-lg mb-4"
     >
-      <h2 class="text-xl font-bold mb-2">
-        {{ item.title }} {{ item.city }}
+      <h2 class="text-lg mb-2">
+        {{ item.title }}, г. {{ item.city }}
       </h2>
-      <div>{{ item.price }}</div>
+      <div>от {{ item.price.from }}$ до {{ item.price.to }}$</div>
     </nuxt-link>
   </div>
 </template>
@@ -21,22 +21,18 @@
 export default {
   data() {
     return {
-      vacancies: [
-        {
-          title: '123',
-          city: 'xvffdxb',
-          key: '123',
-          price: '1778'
-        },
-        {
-          title: '1234',
-          city: 'xvffdxb',
-          key: '1234',
-          price: '1778'
-        }
-      ],
+      vacancies: [],
     }
   },
+  created() {
+    this.getVacancies()
+  },
+  methods: {
+    async getVacancies() {
+      let result = await this.$axios.$get('http://134.209.194.82:3000/api/vacancies')
+      this.vacancies = result.data
+    }
+  }
 }
 </script>
 
