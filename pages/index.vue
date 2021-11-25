@@ -34,8 +34,8 @@
           </div>
         </nuxt-link>
       </div>
-
     </div>
+
     <div class="w-full lg:w-2/6">
       <h2 class="font-bold text-lg mb-8">Новости компании</h2>
       <div
@@ -71,15 +71,15 @@ export default {
   },
   created() {
     this.getNews()
-    this.getProducts()
+    this.getPopularProducts()
   },
   methods: {
     async getNews() {
       let result = await this.$axios.$get('http://134.209.194.82:3000/api/news')
       this.news = result.data
     },
-    async getProducts() {
-      let result = await this.$axios.$get(`http://134.209.194.82:3000/api/categories/furniture`)
+    async getPopularProducts() {
+      let result = await this.$axios.$get(`http://134.209.194.82:3000/api/products/popular`)
       this.products = result.data
     }
   }
